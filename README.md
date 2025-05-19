@@ -93,7 +93,7 @@ This pipeline focuses on actionable outcomes rather than single, potentially mis
 1.  Clone the repository:
 
     ```bash
-    git clone https://github.com/buddhiW/WuzwTDARz30dcTL4.git
+    git clone https://github.com/buddhiW/jw6h5r0ggDdU6IXW.git
     ```
 
 2.  Create a virtual environment (recommended):
