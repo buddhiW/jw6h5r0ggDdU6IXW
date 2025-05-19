@@ -45,10 +45,10 @@ The data is split (80% train, 20% test) for developing and evaluating the pipeli
 3.  **Training & Application:** Model 2 is trained on the training set (using all features). It then classifies *only* the subset of the test data predicted as "yes" by Model 1.
 
 **Common Technical Steps (explored in `main.ipynb`):**
-* **Data Preprocessing:** Label Encoding, One-Hot Encoding, StandardScaler.
-* **Handling Class Imbalance:** Crucial for both models. Techniques explored include SMOTE, SMOTEENN, and model-level class weighting (e.g., `scale_pos_weight`).
-* **Model Selection:** Tree-based ensembles (RandomForest, XGBoost, LightGBM) are strong candidates.
-* **Hyperparameter Tuning:** Optuna can optimize models for their stage-specific metrics.
+1. **Data Preprocessing:** Label Encoding, One-Hot Encoding, StandardScaler.
+2. **Handling Class Imbalance:** Crucial for both models. Techniques explored include SMOTE, SMOTEENN, and model-level class weighting (e.g., `scale_pos_weight`).
+3. **Model Selection:** Tree-based ensembles (RandomForest, XGBoost, LightGBM) are strong candidates.
+4. **Hyperparameter Tuning:** Optuna can optimize models for their stage-specific metrics.
 
 ## Results & Key Findings (Interpreted for the Two-Stage Pipeline)
 
