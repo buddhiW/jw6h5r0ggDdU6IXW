@@ -62,11 +62,11 @@ This pipeline focuses on actionable outcomes rather than single, potentially mis
     * **Outcome:** The ratio of **true positives to false positives among Model 2's "yes" predictions was almost 50:50**. This is a substantial improvement from the original dataset's approximate 7% "yes" rate, ensuring marketing efforts are highly targeted. This implies a precision of around 0.5 for this stage on the pre-filtered candidates.
     * The `main.ipynb` shows that component models (like a tuned LightGBM for Model 2 logic) can achieve strong F1-scores (e.g., ~0.62) and Balanced Accuracy (e.g., ~0.80) on their respective test sets, indicating robust predictive power.
 * **Key Drivers for Subscription (from exploratory data analysis (EDA)):**
-    1.  `duration`: Last contact duration (most critical).
-    2.  `month`: Contacts in March or October.
-    3.  `balance`: Average yearly balance.
-    4.  `age`: Customer's age.
-    5.  `housing_yes`: Having a housing loan (negatively correlated).
+    *  `duration`: Last contact duration (most critical).
+    *  `month`: Contacts in March or October.
+    *  `balance`: Average yearly balance.
+    *  `age`: Customer's age.
+    *  `housing_yes`: Having a housing loan (negatively correlated).
 * **Prioritized Customer Segments for Stage 2 Engagement:**
     * Customers filtered by Model 1 who then show characteristics indicative of higher engagement (e.g., likely to have longer call durations if contacted).
     * Those who can be targeted in historically successful months (March, October).
@@ -113,13 +113,14 @@ This pipeline focuses on actionable outcomes rather than single, potentially mis
 ## Usage
 
 Open and run `main.ipynb` to reproduce the analysis.
+
 To implement the full pipeline as described:
-    * Perform an 80/20 train/test split.
-    * **Train Model 1** (demographic/financial features, optimize recall) on the training set.
-    * Apply Model 1 to the test set to get a list of potential "yes" candidates and calculate call hours saved.
-    * **Train Model 2** (all features, optimize precision) on the training set.
-    * Apply Model 2 to Model 1's "yes" candidates from the test set.
-    * Evaluate Model 2's precision and TP:FP ratio on this final set.
+- Perform an 80/20 train/test split.
+- **Train Model 1** (demographic/financial features, optimize recall) on the training set.
+- Apply Model 1 to the test set to get a list of potential "yes" candidates and calculate call hours saved.
+- **Train Model 2** (all features, optimize precision) on the training set.
+- Apply Model 2 to Model 1's "yes" candidates from the test set.
+- Evaluate Model 2's precision and TP:FP ratio on this final set.
 
 ## Conclusion Summary
 
