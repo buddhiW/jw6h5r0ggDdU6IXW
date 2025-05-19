@@ -83,6 +83,7 @@ This pipeline focuses on actionable outcomes rather than single, potentially mis
 
 * `data/`: Contains the dataset used in the project.
 * `main.ipynb`: Jupyter notebook containing model development.
+* `main_backup.ipynb`: Contains more model tuning experiments.
 * `EDA.ipynb`: Exoloratory data analysis.
 * `README.md`: This file.
 * `requirements.txt`: List of Python dependencies.
