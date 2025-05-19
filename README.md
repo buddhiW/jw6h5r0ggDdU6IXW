@@ -54,20 +54,19 @@ The data is split (80% train, 20% test) for developing and evaluating the pipeli
 
 This pipeline focuses on actionable outcomes rather than single, potentially misleading metrics like accuracy.
 
-* **Stage 1 (Model 1 - Call Efficiency):**
+* **Stage 1 (Model 1 - Initial screening, optimizing call efficiency):**
     * Successfully identified a broader pool of potential leads while significantly reducing unproductive effort.
     * **Outcome:** This stage was able to **save an estimated 162.02 hours of unnecessary call time**, demonstrating a major improvement in operational efficiency.
-* **Stage 2 (Model 2 - Lead Quality & Conversion Focus):**
+* **Stage 2 (Model 2 - Focused targeting, lead Quality & conversion focus):**
     * Dramatically improved the concentration of genuine prospects from the filtered list.
     * **Outcome:** The ratio of **true positives to false positives among Model 2's "yes" predictions was almost 50:50**. This is a substantial improvement from the original dataset's approximate 7% "yes" rate, ensuring marketing efforts are highly targeted. This implies a precision of around 0.5 for this stage on the pre-filtered candidates.
     * The `main.ipynb` shows that component models (like a tuned LightGBM for Model 2 logic) can achieve strong F1-scores (e.g., ~0.62) and Balanced Accuracy (e.g., ~0.80) on their respective test sets, indicating robust predictive power.
-* **Key Drivers for Subscription (from comprehensive Model 2 logic):**
+* **Key Drivers for Subscription (from exploratory data analysis (EDA)):**
     1.  `duration`: Last contact duration (most critical).
-    2.  `month_mar`, `month_oct`: Contacts in March or October.
-    3.  `contact_unknown`: An "unknown" contact type.
-    4.  `balance`: Average yearly balance.
-    5.  `age`: Customer's age.
-    6.  `housing_yes`: Having a housing loan (negatively correlated).
+    2.  `month`: Contacts in March or October.
+    3.  `balance`: Average yearly balance.
+    4.  `age`: Customer's age.
+    5.  `housing_yes`: Having a housing loan (negatively correlated).
 * **Prioritized Customer Segments for Stage 2 Engagement:**
     * Customers filtered by Model 1 who then show characteristics indicative of higher engagement (e.g., likely to have longer call durations if contacted).
     * Those who can be targeted in historically successful months (March, October).
@@ -76,18 +75,44 @@ This pipeline focuses on actionable outcomes rather than single, potentially mis
 
 ## Challenges Addressed
 
-* **Resource Drain from Unproductive Calls:** Directly mitigated by Model 1.
-* **Low Conversion Rate from Mass Marketing:** Addressed by Model 2's precision targeting.
-* **Identifying Actionable Behavioral Drivers:** Revealed through feature importance analysis.
+* **Resource drain from unproductive calls:** Directly mitigated by Model 1.
+* **Low conversion rate from mass marketing:** Addressed by Model 2's precision targeting.
+* **Identifying actionable behavioral drivers:** Revealed through EDA.
 
-## How to Run
+## Repository Contents
 
-1.  **Dependencies:**
-    * pandas, numpy, scikit-learn, imblearn
-    * lightgbm, xgboost, optuna
-    * matplotlib, seaborn, lazypredict
-2.  **Data:** Ensure `term-deposit-marketing-2020.csv` is available (e.g., in a `data/` subdirectory or update path in the notebook).
-3.  **Execution:** The `main.ipynb` notebook contains code for data exploration, preprocessing, and training/evaluating individual models whose logic and performance inform the components of this two-stage pipeline. To implement the full pipeline as described:
+* `data/`: Contains the dataset used in the project.
+* `main.ipynb`: Jupyter notebook containing model development.
+* `EDA.ipynb`: Exoloratory data analysis.
+* `README.md`: This file.
+* `requirements.txt`: List of Python dependencies.
+
+## Installation
+
+1.  Clone the repository:
+
+    ```bash
+    git clone https://github.com/buddhiW/WuzwTDARz30dcTL4.git
+    ```
+
+2.  Create a virtual environment (recommended):
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On macOS/Linux
+    venv\Scripts\activate  # On Windows
+    ```
+
+3.  Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+Open and run `main.ipynb` to reproduce the analysis.
+To implement the full pipeline as described:
     * Perform an 80/20 train/test split.
     * **Train Model 1** (demographic/financial features, optimize recall) on the training set.
     * Apply Model 1 to the test set to get a list of potential "yes" candidates and calculate call hours saved.
